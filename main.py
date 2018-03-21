@@ -81,7 +81,11 @@ def main():
     elif action == "2":
         from_crypto = input_crypto()
         to_crypto = "EUR"
-        price = get_crypto_price(from_crypto, to_crypto)
+        try:
+            price = get_crypto_price(from_crypto, to_crypto)
+        except CryptoNameError:
+            print("An error occured, please try again")
+            return
         print_crypto_price(from_crypto, price, to_crypto)
     elif action == "3":
         exit(0)
